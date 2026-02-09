@@ -31,7 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] APX instruction sources identified and read in full when APX work is in scope.
+- [ ] APX architecture and secure development guides reviewed and summarized.
+- [ ] README.md and relevant repo files reviewed; scope documented.
+- [ ] Generated code integrity respected (only implementation/customization files edited).
+- [ ] Dependency governance and runtime constraints assessed and captured.
 
 ## Project Structure
 

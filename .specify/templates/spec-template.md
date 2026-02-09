@@ -95,6 +95,12 @@
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
 - **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
 
+### Constitution Constraints *(mandatory if APX work is in scope)*
+
+- Document the APX instruction sources consulted and confirm full review.
+- Note any generated code boundaries and dependency governance constraints.
+- Capture secure runtime constraints that affect design or testing.
+
 ### Key Entities *(include if feature involves data)*
 
 - **[Entity 1]**: [What it represents, key attributes without implementation]

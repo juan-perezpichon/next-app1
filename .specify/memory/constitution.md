@@ -1,50 +1,50 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: N/A (template) -> 1.0.0
+- Modified principles: PRINCIPLE_1_NAME -> Documentation-First Requirements Intake; PRINCIPLE_2_NAME -> Repository Comprehension Before Changes; PRINCIPLE_3_NAME -> Generated Code Integrity; PRINCIPLE_4_NAME -> Dependency Governance; PRINCIPLE_5_NAME -> Secure Runtime Discipline
+- Added sections: None (template placeholders resolved)
+- Removed sections: None
+- Templates requiring updates: ✅ .specify/templates/plan-template.md; ✅ .specify/templates/spec-template.md; ✅ .specify/templates/tasks-template.md; ⚠ .specify/templates/commands/*.md (not found)
+- Follow-up TODOs: TODO(RATIFICATION_DATE): original adoption date not found in repo
+-->
+# next-app1 Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Documentation-First Requirements Intake
+MUST locate local APX instructions at .github/instructions/apx_style_guide.instructions.md when APX work is in scope. If missing, MUST retrieve the authoritative style guide, APX architecture docs, and APX secure development guide via approved tooling and read each document in full before design or coding. Rationale: APX compliance depends on current, authoritative guidance.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Repository Comprehension Before Changes
+MUST read README.md and the relevant component files before modifying code. If instructions require reading the entire repo, do so and document scope in the plan. Rationale: avoids misaligned changes and hidden constraints.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Generated Code Integrity
+PROHIBITED from editing APX-generated artifacts (transaction abstract classes, IDE generated configs). Only implementation classes or files marked for customization (e.g., *-app, *Impl) may be changed. Rationale: generated code is overwritten by the framework.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Dependency Governance
+MUST declare dependencies only in the module that uses them, never in parent POMs, and MUST NOT mark dependencies as optional. Use APX CLI to remove dependencies instead of editing pom.xml manually. Runtime Import-Package ordering and inclusion of trailing * MUST be preserved. Rationale: keeps OSGi metadata consistent and deployable.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Secure Runtime Discipline
+MUST follow APX security and runtime rules: use bind variables, avoid DB-specific SQL, never access DataSource directly, never manage transactions or threads manually, avoid System.* logging, and do not catch generic Exception. Only approved exception types may be thrown from application code. Rationale: ensures security and platform stability.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## APX Security and Runtime Constraints
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- Data access uses APX JdbcUtils or approved connectors only; direct DataSource/Connection access is prohibited.
+- SQL uses bind variables and schema-qualified tables; vendor-specific SQL constructs are prohibited.
+- Error handling uses APX advice/error model; do not throw RuntimeException or catch Exception.
+- Logging uses framework logger with appropriate levels; System.out/System.err are prohibited.
+- Transactions and threads are framework-managed; manual commit/rollback or thread creation is prohibited.
+- External calls use approved connectors with architecture validation where required.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Workflow and Compliance
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Step 1: Requirements analysis must verify local instructions and fetch external APX docs if missing.
+- Step 2: Read APX architecture docs and the secure development guide in full.
+- Step 3: Read README.md and relevant repo files (or the entire repo if required).
+- Step 4: Implement changes following APX standards and the constraints above.
+- Step 5: Record compliance checks in plans/specs/tasks and validate before merge.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes conflicting practices. Amendments require a documented rationale and version bump following semantic versioning. All plans, specs, and tasks must include a constitution compliance check, and reviews must verify compliance before merge.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: TODO(RATIFICATION_DATE): original adoption date not found in repo | **Last Amended**: 2026-02-08
